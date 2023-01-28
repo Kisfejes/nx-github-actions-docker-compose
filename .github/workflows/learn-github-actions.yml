@@ -13,3 +13,5 @@ jobs:
       - run: bats -v
       - run: pwd
       - run: ls -ail
+      - run: docker -v
+      - run: docker-compose -v
