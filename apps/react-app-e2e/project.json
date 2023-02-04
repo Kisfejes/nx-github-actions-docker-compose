@@ -17,6 +17,12 @@
         }
       }
     },
+    "e2e-script": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node apps/react-app-e2e/run-cypress.js"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
