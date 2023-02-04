@@ -2,21 +2,17 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is running tests
 on: [push]
 jobs:
-  e2e:
+  e2e-working:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: free -m
-      - run: 'docker-compose -f docker-compose.yml run --rm web'
-
-  check-cypress:
+      - run: npm install
+      - run: 'docker-compose -f working.docker-compose.yml run --rm web'
+  e2e-not-working:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Check memory
-        run: free -m
-
-      - name: Check cypress
-        run: 'docker-compose -f check-cypress.docker-compose.yml run --rm check-cypress'
+      - uses: actions/checkout@v3
+      - run: free -m
+      - run: npm install
+      - run: 'docker-compose -f not-working.docker-compose.yml run --rm web'
